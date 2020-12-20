@@ -3,6 +3,12 @@
 
 using namespace std;
 
+struct Rect
+{
+    int length;
+    int width;
+};
+
 // pass by value
 void swap1(int x, int y)
 {
@@ -41,6 +47,22 @@ int * func(int size)
     return p;
 }
 
+// structures
+
+void dimension(struct Rect *r) {
+    r->length = 20;
+    cout << "Length: " << r->length << ", Width: " << r->width << endl;
+}
+
+struct Rect *dimension2() {
+    struct Rect *r;
+    r = (struct Rect *)malloc(sizeof(struct Rect));
+    r->length = 9;
+    r->width = 6;
+
+    return r;
+}
+
 int main()
 {
     int a = 10;
@@ -62,4 +84,11 @@ int main()
     for (int i = 0; i < s; i++) {
         cout << q[i] << endl;
     }
+
+    struct Rect r = {10, 5};
+    cout << "Length: " << r.length << ", Width: " << r.width << endl;
+    dimension(&r);
+
+    struct Rect *r1 = dimension2();
+    cout << "Length: " << r1->length << ", Width: " << r1->width << endl;
 }
